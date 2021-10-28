@@ -7,7 +7,7 @@ const Customer = {
         return allCustomer;
     },
 
-    async getCustomerById(id) {
+    async getById(id) {
         const customer = await db('customers')
                             .where({id: id})
                             .select('id', 'email', 'full_name', 'phone_number', 'default_shipping_address', 'country')
@@ -16,7 +16,7 @@ const Customer = {
         return customer;
     },
 
-    async getCustomerByEmail(email) {
+    async getByEmail(email) {
         const customer = await db('customers')
                             .where({email: email})
                             .select('id', 'email', 'full_name', 'phone_number', 'default_shipping_address', 'country')
@@ -25,7 +25,7 @@ const Customer = {
         return customer;
     },
 
-    async getCustomerByEmailShowPassword(email) {
+    async getByEmailShowPassword(email) {
         const customer = await db('customers')
                             .where({email: email})
                             .select('id', 'email', 'password', 'full_name', 'phone_number', 'default_shipping_address', 'country')
@@ -34,7 +34,7 @@ const Customer = {
         return customer;
     },
 
-    async registerCustomer(data, trx) {
+    async register(data, trx) {
         const customer = await db('customers').insert(data).transacting(trx);
 
         return customer;
